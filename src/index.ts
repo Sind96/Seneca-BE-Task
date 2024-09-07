@@ -1,11 +1,23 @@
 import express from "express";
+import mongoose from "mongoose";
+import bodyParser from "body-parser";
+
 const app = express();
+
 const port = 3000;
+import router from "./router";
 
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-});
+app.use(bodyParser.json());
+app.use(router);
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
-});
+(async function () {
+  try {
+    mongoose.connect("mongodb://127.0.0.1:27017/StatsService");
+    app.listen(port);
+    console.log(
+      `Server running on PORT ${port} and Database has successfully connected!`
+    );
+  } catch (e) {
+    console.log(`Error with connecting:`, e);
+  }
+})();
