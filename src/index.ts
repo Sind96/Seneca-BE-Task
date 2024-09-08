@@ -16,7 +16,7 @@ app.use(router);
     console.log(
       `Server running on PORT ${port} and Database has successfully connected!`
     );
-  } catch (e) {
-    console.log(`Error with connecting:`, e);
+  } catch (error) {
+    console.log(`Error with connecting:`, error);
   }
 })();

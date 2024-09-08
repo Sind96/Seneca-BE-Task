@@ -4,8 +4,8 @@ This application manages study session data by providing functionality to persis
 
 ## Getting started
 
-- Node.js (version 18 or above): Download and install from the [Node.js](https://nodejs.org/en) website.
-- A command-line interface (CLI) such as Terminal or Command Prompt
+- **Node.js (version 18 or above)**: Download and install from the [Node.js](https://nodejs.org/en) website.
+- **A command-line interface (CLI)**: Such as Terminal or Command Prompt.
 
 ## Installation
 
@@ -23,8 +23,8 @@ This application manages study session data by providing functionality to persis
 
 3. Database Setup:
 
-- Before running the project locally, you need to create a MongoDB database named _StatsService_. If you don't have MongoDB Compass installed, you can download it from [here](https://www.mongodb.com/docs/compass/current/) and follow the instructions to set it up.
-- Inside the StatsService database, create the following collection:
+  - In order for you to have your project running locally, you need to create a MongoDB database named **StatsService**. If you don't have MongoDB Compass installed, you can download it from [here](https://www.mongodb.com/docs/compass/current/) and follow the instructions to set it up. Once downloaded and user account is set up, you can set up the MongoDB database.
+  - Inside the StatsService database, create the following collection:
 
   ```sh
   stats
@@ -38,10 +38,14 @@ This application manages study session data by providing functionality to persis
    npm run dev
    ```
 
-5. In order to run your tests, do the below:
+5. In order to run your tests, execute:
    ```sh
    npm test
    ```
+
+## Decisions and Considerations
+
+- Environment Variables: An .env file to hold the port and MongoDB URI was not included for simplicity. In a more sensitive or complex project, creating an .env file and storing sensitive information there would be recommended.
 
 ## Tech Stack
 
