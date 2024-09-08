@@ -1,13 +1,12 @@
 import express from "express";
 import mongoose from "mongoose";
-import bodyParser from "body-parser";
 
 const app = express();
 
 const port = 3000;
 import router from "./router";
 
-app.use(bodyParser.json());
+app.use(express.json());
 app.use(router);
 
 (async function () {
