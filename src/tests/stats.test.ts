@@ -3,6 +3,7 @@ import express from "express";
 import mongoose from "mongoose";
 import {
   fetchCourseLifetimeStats,
+  getStudySession,
   persistStudySession,
 } from "../controllers/stats";
 import { Stats } from "../models/stats";
@@ -90,5 +91,54 @@ describe("GET to /courses/:courseId", () => {
     expect(response.body[0]).toHaveProperty("totalModulesStudied", 7);
     expect(response.body[0]).toHaveProperty("averageScore", 70);
     expect(response.body[0]).toHaveProperty("timeStudied", 80000);
+  });
+});
+
+// Test for getStudySession controller function
+// This test checks that a GET request to /courses/:courseId/sessions/:sessionId with valid headers returns
+// a single study session and returns a 200 status with the expected response body.
+
+app.get("/courses/:courseId/sessions/:sessionId", getStudySession);
+
+describe("GET to /courses/:courseId/sessions/:sessionId", () => {
+  beforeAll(async () => {
+    await mongoose.connect("mongodb://localhost:27017/testdb");
+
+    //Adding temporary data to database
+    await Stats.create([
+      {
+        xuserid: "Sindhu",
+        courseId: "maths",
+        sessionId: "test1",
+        totalModulesStudied: 5,
+        averageScore: 80,
+        timeStudied: 50000,
+      },
+      {
+        xuserid: "Sindhu",
+        courseId: "maths",
+        sessionId: "test2",
+        totalModulesStudied: 2,
+        averageScore: 60,
+        timeStudied: 30000,
+      },
+    ]);
+  });
+
+  afterAll(async () => {
+    await mongoose.connection.dropDatabase();
+    await mongoose.connection.close();
+  });
+
+  it("should fetch a specific study session and return 200", async () => {
+    const response = await request(app)
+      .get("/courses/maths/sessions/test1")
+      .set("xuserid", "Sindhu");
+
+    expect(response.status).toBe(200);
+    expect(response.body).toHaveProperty("sessionId", "test1");
+    expect(response.body).toHaveProperty("totalModulesStudied", 5);
+    expect(response.body).toHaveProperty("averageScore", 80);
+    expect(response.body).toHaveProperty("timeStudied", 50000);
   });
 });
