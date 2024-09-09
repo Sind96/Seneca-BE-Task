@@ -11,7 +11,7 @@ app.use(router);
 
 (async function () {
   try {
-    mongoose.connect("mongodb://127.0.0.1:27017/StatsService");
+    await mongoose.connect("mongodb://127.0.0.1:27017/StatsService");
     app.listen(port);
     console.log(
       `Server running on PORT ${port} and Database has successfully connected!`
