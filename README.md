@@ -1,4 +1,4 @@
-# Seneca-BE-Task
+# StudyTracker-Backend
 
 This application manages study session data by providing functionality to persist session events, fetch course lifetime statistics, and retrieve individual study sessions.
 
@@ -12,7 +12,7 @@ This application manages study session data by providing functionality to persis
 1. Clone this repo and enter the main branch:
 
    ```bash
-   git clone https://github.com/Sind96/Seneca-BE-Task
+   git clone https://github.com/Sind96/StudyTracker-Backend
    ```
 
 2. Install dependencies in the main folder:
@@ -23,14 +23,14 @@ This application manages study session data by providing functionality to persis
 
 3. Database Setup:
 
-  - In order for you to have your project running locally, you need to create a MongoDB database named **StatsService**. If you don't have MongoDB Compass installed, you can download it from [here](https://www.mongodb.com/docs/compass/current/) and follow the instructions to set it up. Once downloaded and user account is set up, you can set up the MongoDB database.
-  - Inside the StatsService database, create the following collection:
+- In order for you to have your project running locally, you need to create a MongoDB database named **StatsService**. If you don't have MongoDB Compass installed, you can download it from [here](https://www.mongodb.com/docs/compass/current/) and follow the instructions to set it up. Once downloaded and user account is set up, you can set up the MongoDB database.
+- Inside the StatsService database, create the following collection:
 
-  ```sh
-  stats
-  ```
+```sh
+stats
+```
 
-  - If any initial data is required, please ensure to add it accordingly.
+- If any initial data is required, please ensure to add it accordingly.
 
 4. Start the app for it to work on your localhost:
 
